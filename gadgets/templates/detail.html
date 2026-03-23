@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ gadget.name }} - Nexus Tech Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .detail-card {
+            background: white; max-width: 800px; margin: 40px auto; padding: 30px;
+            border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex; gap: 30px; align-items: center;
+        }
+        .detail-image { width: 50%; border-radius: 10px; object-fit: contain; }
+        .info-section { width: 50%; }
+        .price { font-size: 24px; color: #28a745; font-weight: bold; margin-bottom: 20px; }
+        .buy-btn {
+            display: inline-block; background-color: #ff9900; color: white;
+            padding: 12px 25px; text-decoration: none; border-radius: 5px;
+            font-weight: bold; font-size: 18px; margin-top: 20px;
+        }
+        .buy-btn:hover { background-color: #e38800; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #007BFF; text-decoration: none; }
+        /* A little styling for our new wishlist buttons */
+        .wishlist-btn { background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        .wishlist-btn:hover { background-color: #0056b3; }
+        .view-wishlist-link { display: block; text-align: center; margin-top: 15px; font-weight: bold; color: #28a745; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="detail-card">
+        <img src="{{ gadget.image_url }}" alt="{{ gadget.name }}" class="detail-image">
+        
+        <div class="info-section">
+            <h2 style="margin-top: 0;">{{ gadget.name }}</h2>
+            <p style="color: #666; font-size: 18px;">Brand: <strong>{{ gadget.brand.name }}</strong></p>
+            <div class="price">Current Market Price: ₹{{ gadget.price }}</div>
+            
+            <h3>Device Specs:</h3>
+            <div style="line-height: 1.6;">
+            {{ gadget.specs|linebreaks }}
+        </div>
+
+           {% if gadget.gadget_link %}
+           <a href="{{ gadget.gadget_link }}" target="_blank" class="buy-btn">View on Official Website</a>
+           {% else %}
+           <p style="color: #ff0000; font-style: italic;">Market link currently unavailable.</p>
+           {% endif %}
+
+           <form action="{% url 'toggle_wishlist' gadget.id %}" method="POST">
+               {% csrf_token %}
+               <button type="submit" class="wishlist-btn">
+                   Add to Wishlist / Remove
+               </button>
+           </form>
+
+        </div>
+    </div>
+    
+    <a href="{% url 'home' %}" class="back-link">← Back to Tracker Dashboard</a>
+    
+    <a href="{% url 'view_wishlist' %}" class="view-wishlist-link"> View Wishlisted Items</a>
+
+</body>
+</html>
