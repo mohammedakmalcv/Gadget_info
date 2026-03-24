@@ -5,8 +5,8 @@ An e-commerce aggregator platform designed to track and compare tech products.
 ## Features
 * Browse and search for various tech products.
 * Compare prices and specifications.
-* [Add another feature here, e.g., User authentication, Shopping cart, etc.]
-* [Add another feature here]
+* User authentication, Shopping cart
+* Configured secure user registration and login workflows leveraging Django’s built-in authentication system. Enforced password hashing and session management to protect user profiles and wishlist data securely.
 
 ## Built With
 * **Backend:** Python, Django
@@ -20,7 +20,7 @@ An e-commerce aggregator platform designed to track and compare tech products.
 
 If you want to run this project on your own machine, follow these steps:
 
-1. **Clone the repository:**
+1. 
    ```bash
    git clone https://github.com/mohammedakmalcv/Gadget_info.git
    cd nexus-tech-tracker
