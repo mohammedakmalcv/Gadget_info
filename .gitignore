@@ -4,20 +4,20 @@ __pycache__/
 *.pot
 *.log
 
-# Local Database (Keep your local test data private)
+# Local Database 
 db.sqlite3
 db.sqlite3-journal
 
-# Virtual Environments (These are huge and should not be uploaded)
+# Virtual Environments 
 venv/
 env/
 .venv/
 djvir/
 
-# Frontend Dependencies (For any HTML/JS/React/Vue additions)
+# Frontend Dependencies 
 node_modules/
 
-# Environment Variables (CRITICAL: Keeps your Django SECRET_KEY safe)
+# Environment Variables
 .env
 
 # OS Generated Files

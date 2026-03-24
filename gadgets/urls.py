@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # The normal home page
     path('', views.home, name='home'), 
     path('category/<int:category_id>/', views.home, name='category_filter'),
     path('signup/', views.signup, name='signup'),

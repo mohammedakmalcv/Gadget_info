@@ -13,14 +13,14 @@ class Category(models.Model):
     
 class Brand(models.Model):
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE) # Links Brand to Category
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name} ({self.category.name})"
     
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE) # Links Product to Brand
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE) 
     price = models.DecimalField(max_digits=10, decimal_places=2)
     specs = models.TextField(help_text="Put all the cool specs here (RAM, Storage, etc.)")
     image_url = models.URLField(max_length=500, default="https://via.placeholder.com/300")
@@ -35,7 +35,7 @@ class Wishlist(models.Model):
     added_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'product') # Prevents adding the same item twice
+        unique_together = ('user', 'product') 
 
     def __str__(self):
         return f"{self.user.username}'s wishlist item: {self.product.name}"

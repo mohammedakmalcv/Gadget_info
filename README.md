@@ -22,7 +22,7 @@ If you want to run this project on your own machine, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/nexus-tech-tracker.git](https://github.com/yourusername/nexus-tech-tracker.git)
+   git clone https://github.com/mohammedakmalcv/Gadget_info.git
    cd nexus-tech-tracker
 
 2. 
