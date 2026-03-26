@@ -23,7 +23,7 @@ If you want to run this project on your own machine, follow these steps:
 1. 
    ```bash
    git clone https://github.com/mohammedakmalcv/Gadget_info.git
-   cd nexus-tech-tracker
+   cd Gadget_info
 
 2. 
     python -m venv venv
