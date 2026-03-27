@@ -21,7 +21,6 @@ An e-commerce aggregator platform designed to track and compare tech products.
 If you want to run this project on your own machine, follow these steps:
 
 1. 
-   ```bash
    git clone https://github.com/mohammedakmalcv/Gadget_info.git
    cd Gadget_info
 
