@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Product, Category
-from .models import Product, Wishlist
+from .models import Product, Category, Wishlist, Profile 
+
 from django.contrib import messages
 
 def home(request, category_id=None):
@@ -66,3 +66,17 @@ def toggle_wishlist(request, product_id):
 def view_wishlist(request):
     wishlist_items = Wishlist.objects.filter(user=request.user)
     return render(request, 'wishlist.html', {'wishlist_items': wishlist_items})
+
+
+@login_required
+def profile_view(request):
+    
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    
+    
+    recent_wishlist = Wishlist.objects.filter(user=request.user).order_by('-added_date')[:3]
+    
+    return render(request, 'profile.html', {
+        'profile': profile,
+        'recent_wishlist': recent_wishlist
+    })

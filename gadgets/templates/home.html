@@ -29,17 +29,35 @@
 
     <h1 style="text-align: center; color: #333;">Welcome to Nexus Tech Tracker</h1>
 
-    <div style="text-align: center; margin-bottom: 20px;">
+    <div style="margin-bottom: 30px;">
         {% if user.is_authenticated %}
-            <div style="display: flex; justify-content: center; align-items: center; gap: 5px;">
-                <p style="margin: 0;">Welcome back, <strong>{{ user.username }}</strong>! | </p>
-                <form action="{% url 'logout' %}" method="post" style="margin: 0;">
-                    {% csrf_token %}
-                    <button type="submit" style="background: none; border: none; color: #007BFF; text-decoration: underline; cursor: pointer; font-size: 16px; padding: 0;">Log Out</button>
-                </form>
+            <div style="display: flex; justify-content: space-between; align-items: center; background-color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                
+                <div>
+                    <p style="margin: 0; font-size: 16px; color: #333;">Welcome back, <strong>{{ user.username }}</strong>!</p>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <a href="{% url 'profile' %}" style="color: #007BFF; text-decoration: none; font-weight: bold;">My Profile</a>
+                    
+                    <span style="color: #ccc;">|</span>
+                    
+                    <form action="{% url 'logout' %}" method="post" style="margin: 0;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; color: #dc3545; text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold; padding: 0; transition: 0.2s;">Log Out</button>
+                    </form>
+                </div>
+                
             </div>
         {% else %}
-            <p>You must be logged in to view full market analysis. | <a href="{% url 'login' %}">Log In</a> | <a href="{% url 'signup' %}">Sign Up</a></p>
+            <div style="text-align: center; background-color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <p style="margin: 0;">You must be logged in to view full market analysis. 
+                    <span style="margin: 0 10px;">|</span>
+                    <a href="{% url 'login' %}" style="color: #007BFF; text-decoration: none; font-weight: bold;">Log In</a> 
+                    <span style="margin: 0 10px;">|</span> 
+                    <a href="{% url 'signup' %}" style="color: #28a745; text-decoration: none; font-weight: bold;">Sign Up</a>
+                </p>
+            </div>
         {% endif %}
     </div>
 
