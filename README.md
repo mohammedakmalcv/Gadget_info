@@ -25,8 +25,8 @@ If you want to run this project on your own machine, follow these steps:
 2. cd Gadget_info
 
 3. python -m venv venv
-    # on mac or linux : source venv/bin/activate  
-    # On Windows : venv\Scripts\activate
+    ### on mac or linux : source venv/bin/activate  
+    ### On Windows : venv\Scripts\activate
 
 4. pip install -r requirements.txt
 
