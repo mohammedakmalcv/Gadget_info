@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Product, Category, Wishlist, Profile 
+from .forms import CustomUserCreationForm
 
 from django.contrib import messages
 
@@ -32,16 +33,16 @@ def home(request, category_id=None):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST) 
         if form.is_valid():
             form.save() 
             return redirect('login') 
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     
     return render(request, 'registration/signup.html', {'form': form})
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def product_detail(request, pk):
     
     gadget = Product.objects.get(id=pk)

@@ -40,12 +40,21 @@
         button:hover {
             background-color: #006400;
         }
+
+        .helptext {
+            font-size: 0.8em;
+            color: #666;
+            display: block;
+            margin-top: -5px; 
+            margin-bottom: 10px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
 
     <div class="login-card">
-        <h2>Login to Nexus Gear</h2>
+        <h2>Login to Nexus</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}

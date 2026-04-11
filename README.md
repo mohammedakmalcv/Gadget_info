@@ -1,6 +1,6 @@
 # Nexus Tech Tracker
 
-An e-commerce aggregator platform designed to track and compare tech products. 
+An e-commerce aggregator platform designed to track and compare various tech products. 
 
 ## Features
 * Browse and search for various tech products.
@@ -20,21 +20,18 @@ An e-commerce aggregator platform designed to track and compare tech products.
 
 If you want to run this project on your own machine, follow these steps:
 
-1. 
-   git clone https://github.com/mohammedakmalcv/Gadget_info.git
-   cd Gadget_info
+1. git clone https://github.com/mohammedakmalcv/Gadget_info.git
 
-2. 
-    python -m venv venv
-    source venv/bin/activate  # On Windows use: venv\Scripts\activate
+2. cd Gadget_info
 
-3.
-    pip install -r requirements.txt
+3. python -m venv venv
+    # on mac or linux : source venv/bin/activate  
+    # On Windows : venv\Scripts\activate
 
-4.
-    python manage.py migrate
+4. pip install -r requirements.txt
 
-5.
-    python manage.py runserver
+5. python manage.py migrate
+
+6. python manage.py runserver
 
 -----------------------------------------------------------------------------------------------------------
