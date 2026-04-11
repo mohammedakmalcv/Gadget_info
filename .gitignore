@@ -23,3 +23,8 @@ node_modules/
 # OS Generated Files
 .DS_Store
 Thumbs.db
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
