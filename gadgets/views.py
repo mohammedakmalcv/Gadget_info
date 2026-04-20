@@ -7,29 +7,33 @@ from .forms import CustomUserCreationForm
 from django.contrib import messages
 
 def home(request, category_id=None):
-    
     all_categories = Category.objects.all()
+    wishlist_product_ids = []
     
-    
+    if request.user.is_authenticated:
+        wishlist_product_ids = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
+
     if category_id:
         gadgets_to_show = Product.objects.filter(brand__category__id=category_id)
+        return render(request, 'home.html', {
+            'gadgets': gadgets_to_show,
+            'categories': all_categories,
+            'active_category': category_id,
+            'wishlist_product_ids': wishlist_product_ids  
+        })
     else:
-       
-        gadgets_to_show = Product.objects.all()
-        
-    
-    wishlist_product_ids = []
-    if request.user.is_authenticated:
-       
-        wishlist_product_ids = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
-        
-    
-    return render(request, 'home.html', {
-        'gadgets': gadgets_to_show,
-        'categories': all_categories,
-        'active_category': category_id,
-        'wishlist_product_ids': wishlist_product_ids  
-    })
+        category_products = {}
+        for category in all_categories:
+            products = Product.objects.filter(brand__category=category)[:4]
+            if products.exists():
+                category_products[category] = products
+                
+        return render(request, 'home.html', {
+            'category_products': category_products,
+            'categories': all_categories,
+            'active_category': None,
+            'wishlist_product_ids': wishlist_product_ids  
+        })
 
 def signup(request):
     if request.method == 'POST':
