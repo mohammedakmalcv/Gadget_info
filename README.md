@@ -2,6 +2,9 @@
 
 An e-commerce aggregator platform designed to track and compare various tech products. 
 
+## To see the project on web
+https://akmaltest.pythonanywhere.com/
+
 ## Features
 * Browse and search for various tech products.
 * Compare prices and specifications.

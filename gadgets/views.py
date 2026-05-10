@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Product, Category, Wishlist, Profile 
 from .forms import CustomUserCreationForm
+from django.core.management import call_command
+from django.http import HttpResponse
 
 from django.contrib import messages
 
@@ -85,3 +87,11 @@ def profile_view(request):
         'profile': profile,
         'recent_wishlist': recent_wishlist
     })
+
+def run_scraper_secretly(request):
+    try:
+        # This runs your update_prices.py script exactly like the terminal does
+        call_command('update_prices')
+        return HttpResponse("Scraper ran successfully!", status=200)
+    except Exception as e:
+        return HttpResponse(f"Error running scraper: {str(e)}", status=500)

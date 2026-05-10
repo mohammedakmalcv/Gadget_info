@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from gadgets import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('gadgets.urls')),
+    path('cron-trigger-nexus-secret-8842/', views.run_scraper_secretly, name='secret_scraper'),
 ]
